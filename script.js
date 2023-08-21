@@ -10,6 +10,7 @@ imageInput.addEventListener('change', (event) => {
         uploadedImage.src = imageURL;
     }
 });
+
 downloadButton.addEventListener('click', () => {
     const canvas = document.createElement('canvas');
     canvas.width = flyerImage.width;
@@ -23,8 +24,26 @@ downloadButton.addEventListener('click', () => {
     const uploadedImageX = (flyerImage.width - uploadedImage.width) / 2;
     const uploadedImageY = (flyerImage.height - uploadedImage.height) / 2;
     
-    // Draw the uploaded image
+    // Save the current context state
+    context.save();
+    
+    // Create a circular clipping path
+    context.beginPath();
+    context.arc(
+        uploadedImageX + uploadedImage.width / 2,
+        uploadedImageY + uploadedImage.height / 2,
+        uploadedImage.width / 2,
+        0,
+        Math.PI * 2
+    );
+    context.closePath();
+    context.clip();
+    
+    // Draw the uploaded image (inside the circular clipping path)
     context.drawImage(uploadedImage, uploadedImageX, uploadedImageY, uploadedImage.width, uploadedImage.height);
+    
+    // Restore the context state to remove the clipping path
+    context.restore();
     
     const editedImageURL = canvas.toDataURL('image/jpeg');
     const a = document.createElement('a');
