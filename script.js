@@ -10,17 +10,20 @@ imageInput.addEventListener('change', (event) => {
         uploadedImage.src = imageURL;
     }
 });
-
 downloadButton.addEventListener('click', () => {
     const canvas = document.createElement('canvas');
     canvas.width = flyerImage.width;
     canvas.height = flyerImage.height;
     const context = canvas.getContext('2d');
-    context.drawImage(flyerImage, 0, 0);
     
-    // Adjust the position of the uploaded image here
-    const uploadedImageX = 20; // X-coordinate
-    const uploadedImageY = 20; // Y-coordinate
+    // Draw the flyer image first
+    context.drawImage(flyerImage, 0, 0, flyerImage.width, flyerImage.height);
+    
+    // Calculate the position to center the uploaded image
+    const uploadedImageX = (flyerImage.width - uploadedImage.width) / 2;
+    const uploadedImageY = (flyerImage.height - uploadedImage.height) / 2;
+    
+    // Draw the uploaded image
     context.drawImage(uploadedImage, uploadedImageX, uploadedImageY, uploadedImage.width, uploadedImage.height);
     
     const editedImageURL = canvas.toDataURL('image/jpeg');
@@ -29,4 +32,3 @@ downloadButton.addEventListener('click', () => {
     a.download = 'edited_flyer.jpg';
     a.click();
 });
-
