@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flyer Image Editor</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Flyer Image Editor</h1>
-        <div class="input-container">
-            <label class="upload-label" for="imageInput">Upload Image</label>
-            <input type="file" id="imageInput">
+    <div class="container mx-auto p-4 bg-white shadow-md rounded-lg">
+        <!-- <h1 class="text-center mb-8 text-2xl font-semibold">Flyer Image Editor</h1> -->
+        <div class="flex flex-col items-center space-y-4 mb-8">
+            <label for="imageInput" class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600 transition">Upload Image</label>
+            <input type="file" id="imageInput" class="hidden">
         </div>
-        <div class="preview-container">
-            <img src="placeholder.jpg" alt="Flyer" id="flyerImage">
-            <img src="" alt="Uploaded Image" id="uploadedImage">
+        <div class="relative">
+            <img src="THE CROWNING.png" alt="Flyer" id="flyerImage" class="w-full rounded-lg">
+            <div class="absolute" style="top: 21.5%; left: 26.3%; width: 47%; height: 46%;">
+                <div class="border border-blue-500" style="top: 0; left: 0; width: 100%; height: 100%;"></div>
+                <img src="" alt=" " id="uploadedImage" class="w-full h-full rounded-lg object-contain transition-opacity transition-transform" style="position: relative; top: 0; left: 0; width: 100%; height: 100%;">
+            </div>
         </div>
-        <button id="downloadButton">Download Edited Image</button>
+        
+        <button id="downloadButton" class="block mx-auto my-4 px-4 py-2 bg-blue-500 text-white rounded cursor-pointer hover:bg-blue-600 transition">Download Edited Image</button>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>

@@ -16,17 +16,16 @@ downloadButton.addEventListener('click', () => {
     canvas.width = flyerImage.width;
     canvas.height = flyerImage.height;
     const context = canvas.getContext('2d');
-    context.drawImage(flyerImage, 0, 0);
-    
-    // Adjust the position of the uploaded image here
-    const uploadedImageX = 20; // X-coordinate
-    const uploadedImageY = 20; // Y-coordinate
+
+    // Draw the flyer image first
+    context.drawImage(flyerImage, 0, 0, flyerImage.width, flyerImage.height);
+
+    // Draw the uploaded image without any clipping
     context.drawImage(uploadedImage, uploadedImageX, uploadedImageY, uploadedImage.width, uploadedImage.height);
-    
+
     const editedImageURL = canvas.toDataURL('image/jpeg');
     const a = document.createElement('a');
     a.href = editedImageURL;
     a.download = 'edited_flyer.jpg';
     a.click();
 });
-

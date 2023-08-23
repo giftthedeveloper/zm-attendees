@@ -55,15 +55,16 @@ h1 {
 
 #uploadedImage {
     position: absolute;
-    top: 50%;
+    top: 44%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 150px; /* Adjust the size of the circular image */
-    height: 150px;
-    border-radius: 50%;
+    width: 385px; /* Increase the width for a larger rectangle */
+    height: auto; /* Allow the height to adjust based on aspect ratio */
+    border-radius: 8px; /* Keep rounded corners if desired */
     object-fit: cover;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 
 #downloadButton {
     display: block;
