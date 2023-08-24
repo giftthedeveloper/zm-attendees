@@ -74,7 +74,7 @@ downloadButton.addEventListener('click', () => {
     const editedImageURL = canvas.toDataURL('image/jpeg');
     const a = document.createElement('a');
     a.href = editedImageURL;
-    a.download = 'edited_flyer.jpg';
+    a.download = 'me@zenithmoment.jpg';
     a.click();
 });
 
