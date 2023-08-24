@@ -49,14 +49,26 @@ imageInput.addEventListener('change', (event) => {
 // ...
 
 // Handle image editing and download
+// Handle image editing and download
+// Handle image editing and download
+// Handle image editing and download
 downloadButton.addEventListener('click', () => {
     const canvas = document.createElement('canvas');
-    canvas.width = uploadedImage.width;
-    canvas.height = uploadedImage.height;
+    canvas.width = flyerImage.width;
+    canvas.height = flyerImage.height;
     const context = canvas.getContext('2d');
 
-    // Draw the uploaded image
-    context.drawImage(uploadedImage, 0, 0, uploadedImage.width, uploadedImage.height);
+    // Draw the background flyer image
+    context.drawImage(flyerImage, 0, 0, flyerImage.width, flyerImage.height);
+
+    // Calculate the position and dimensions of the uploaded image on the canvas
+    const uploadedImageCanvasX = (blueRectLeft / 100) * canvas.width;
+    const uploadedImageCanvasY = (blueRectTop / 100) * canvas.height;
+    const uploadedImageCanvasWidth = (blueRectWidth / 100) * canvas.width;
+    const uploadedImageCanvasHeight = (blueRectHeight / 100) * canvas.height;
+
+    // Draw the uploaded image on top of the background flyer image using the original size and position
+    context.drawImage(uploadedImage, uploadedImageCanvasX, uploadedImageCanvasY, uploadedImageCanvasWidth, uploadedImageCanvasHeight);
 
     // Create a download link for the edited image
     const editedImageURL = canvas.toDataURL('image/jpeg');
@@ -65,3 +77,4 @@ downloadButton.addEventListener('click', () => {
     a.download = 'edited_flyer.jpg';
     a.click();
 });
+
