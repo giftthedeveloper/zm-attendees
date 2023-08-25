@@ -33,10 +33,6 @@ imageInput.addEventListener('change', (event) => {
     }
 });
 
-// ...
-
-// ...
-// ...
 
 downloadButton.addEventListener('click', async () => {
     const canvas = document.createElement('canvas');
@@ -54,7 +50,6 @@ downloadButton.addEventListener('click', async () => {
 
     offscreenContext.drawImage(uploadedImage, 0, 0, offscreenCanvas.width, offscreenCanvas.height);
 
-    // Draw the flyer image on the main canvas
     context.drawImage(flyerImage, 0, 0, canvas.width, canvas.height);
 
     // Calculate position and size of the uploaded image on the canvas
@@ -70,17 +65,12 @@ downloadButton.addEventListener('click', async () => {
         uploadedImageCanvasX, uploadedImageCanvasY, uploadedImageCanvasWidth, uploadedImageCanvasHeight
     );
 
-    // Generate a high-quality image URL from the canvas
-    const editedImageURL = canvas.toDataURL('image/jpeg', 1);
+    const editedImageURL = canvas.toDataURL('image/png', 1);
 
     // Create a download link
     const a = document.createElement('a');
     a.href = editedImageURL;
-    a.download = 'me@zenithmoment.jpg';
+    a.download = 'me@zenithmoment.png';
     a.click();
 });
 
-// ...
-
-
-// ...
